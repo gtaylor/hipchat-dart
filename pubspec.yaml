@@ -1,0 +1,8 @@
+name: hipchat
+author: Greg Taylor
+version: 1.0.0
+description: A simple HipChat client
+dependencies:
+  http: any
+dev_dependencies:
+  unittest: any
