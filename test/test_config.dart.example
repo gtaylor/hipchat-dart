@@ -1,0 +1,8 @@
+/**
+ * Re-name this file to test_config.dart and supply your API key below.
+ * If you don't already have an API key, you may generate one
+ * at https://www.hipchat.com/account/api
+ */
+part of hipchattest;
+
+const String API_KEY = 'YOURAPIKEYHERE';
