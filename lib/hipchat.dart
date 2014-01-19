@@ -21,15 +21,28 @@ class HipChatClient {
    * Returns a standard Map of headers for use with the HipChat API.
    */
   Map _getHeaders() {
-    return {'Authorization': 'Bearer ${this.apiKey}'};
+    return {
+      'Authorization': 'Bearer ${this.apiKey}',
+      'content-type': 'application/json',
+    };
   }
   
   /**
-   * Retrieves a list (via a Future) of HipChatRoom instances 
+   * Retrieves a list (via a Future) of [HipChatRoom] instances 
    * representing all of the account's rooms.
    */
   Future<List> getRooms() {
     return RoomEndpoint.getRooms(this);
+  }
+  
+  /**
+   * Sends a notification to an existing room.
+   */
+  Future sendRoomNotification(roomNameOrIdOrInstance, message,
+                              {String color: 'yellow', bool notify: false, 
+                               String message_format: 'html'}) {
+    return RoomEndpoint.sendRoomNotification(this, roomNameOrIdOrInstance,
+        message, color, notify, message_format);
   }
 
 }

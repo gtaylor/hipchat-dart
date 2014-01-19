@@ -13,12 +13,19 @@ import 'package:hipchat/hipchat.dart';
 part 'test_config.dart';
 
 main() {
- test('Tests room listing', () {
-   var client = new HipChatClient(API_KEY);
-   client.getRooms()
-     .then((rooms) {
-       print("ROOMS");
-       print(rooms);
-     });
- });
+
+  group("rooms", () {
+    test('lists correctly', () {
+      var client = new HipChatClient(API_KEY);
+      client.getRooms()
+        .then((rooms) {
+          expect(rooms is List<HipChatRoom>, isTrue);
+        });
+    });
+ 
+    test('can handle notifications', () {
+      var client = new HipChatClient(API_KEY);
+      client.sendRoomNotification('TestingRoom', 'Blarty blarty', color: 'red');
+    });
+  }); // end rooms group
 }
